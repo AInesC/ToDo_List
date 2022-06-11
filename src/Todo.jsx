@@ -1,7 +1,12 @@
 export default function Todo(props) {
 	return (
 		<li className="todo-list__task" key={props.id}>
-			<input type="checkbox" name="task" id={props.id} />
+			<input
+				type="checkbox"
+				name="task"
+				id={props.id}
+				onChange={() => props.toggleComplete(props.id)}
+			/>
 			<label for={props.id}>{props.text}</label>
 			<button type="button" className="todo-list__button complete">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">

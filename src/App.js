@@ -18,6 +18,18 @@ function App() {
 		setInput('');
 	};
 
+	function toggleComplete(id) {
+		const updateTodos = todos.map((todo) => {
+			if (todo.id === id) {
+				return { ...todo, completed: !todo.completed };
+			}
+
+			return todo;
+		});
+
+		setTodos(updateTodos);
+	}
+
 	function deleteTodo(id) {
 		const remainingTodos = todos.filter((todo) => id !== todo.id);
 
@@ -58,6 +70,7 @@ function App() {
 									id={todo.id}
 									text={todo.text}
 									completed={todo.completed}
+									toggleComplete={toggleComplete}
 									deleteTodo={deleteTodo}
 								/>
 							);
