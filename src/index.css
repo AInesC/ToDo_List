@@ -1,9 +1,16 @@
+* {
+	box-sizing: border-box;
+}
+
 body,
 h1,
 div,
 form,
+label,
 input,
-button {
+button,
+ul,
+li {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -14,4 +21,12 @@ button {
 
 body {
 	font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+	list-style: none;
+}
+
+input {
+	outline: none;
 }
