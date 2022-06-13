@@ -11,9 +11,12 @@ body {
 	max-width: 1000px;
 	width: 90vw;
 	margin: 0 auto;
-	padding: 3rem 0;
 	display: grid;
 	gap: 2rem;
+
+	&.top {
+		padding: 3rem 0;
+	}
 }
 
 h1 {
@@ -34,6 +37,23 @@ h1 {
 		color: $main-color;
 		border-color: $accent-color;
 	}
+
+	&--secondary {
+		background-color: $main-color;
+		color: $secondary-color;
+		border-color: $accent-color;
+	}
+}
+
+input[type='text'] {
+	padding: 0.5rem 1rem;
+	border-bottom: 2px solid #555;
+	width: 400px;
+
+	&:focus {
+		border-bottom-color: $accent-color;
+		background-color: lighten($accent-color, 20%);
+	}
 }
 
 .form {
@@ -44,17 +64,6 @@ h1 {
 	div {
 		display: flex;
 		gap: 1.5rem;
-	}
-
-	&__input {
-		padding: 0.5rem 1rem;
-		border-bottom: 2px solid #555;
-		width: 400px;
-
-		&:focus {
-			border-bottom-color: $accent-color;
-			background-color: lighten($accent-color, 20%);
-		}
 	}
 }
 
@@ -73,7 +82,10 @@ h1 {
 		display: flex;
 		justify-content: space-between;
 		width: 500px;
-		padding-left: 3rem;
+
+		&--display {
+			padding-left: 3rem;
+		}
 
 		&:hover {
 			transform: translateY(-5px);
@@ -96,6 +108,15 @@ h1 {
 				text-decoration: line-through wavy $accent-color 15%;
 			}
 		}
+
+		.edit-input {
+			margin-right: 1rem;
+		}
+
+		.btn-container {
+			display: flex;
+			gap: 0.5rem;
+		}
 	}
 
 	&__button {
@@ -115,5 +136,18 @@ h1 {
 	.button-container {
 		display: flex;
 		gap: 2rem;
+	}
+}
+
+.hide {
+	display: none;
+}
+
+.hideButton-container {
+	margin: 0 auto;
+	width: 500px;
+
+	label {
+		padding-left: 0.3rem;
 	}
 }
