@@ -44,6 +44,7 @@ export default function Todo(props) {
 						name="task"
 						id={props.id}
 						onChange={() => props.toggleComplete(props.id)}
+						checked={props.completed}
 					/>
 					<label htmlFor={props.id}>{props.text}</label>
 					<button type="button" className="todo-list__button complete">

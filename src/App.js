@@ -14,6 +14,8 @@ function App() {
 		}
 	});
 	const [newTask, setNewTask] = useState('');
+	const [hide, setHide] = useState(false);
+	const [uncompleteTodos, setUncompleteTodos] = useState([]);
 
 	//LOCAL STORAGE
 	useEffect(() => {
@@ -58,7 +60,7 @@ function App() {
 		setNewTask(event.target.value);
 	};
 
-	//FUNTION TO HANDLE EDIT FORM SUBMISSION
+	//FUNCTION TO HANDLE EDIT FORM SUBMISSION
 	function handleEditSubmit(event, id, newTask) {
 		event.preventDefault();
 
@@ -71,6 +73,15 @@ function App() {
 
 		setTodos(updatedTasks);
 	}
+
+	// FUNCTION TO HIDE ALL COMPLETED TODOS
+	const hideCompleted = () => {
+		setHide(!hide);
+
+		setUncompleteTodos(todos.filter((todo) => !todo.completed));
+
+		console.log(uncompleteTodos);
+	};
 
 	return (
 		<div className="App">
@@ -97,24 +108,43 @@ function App() {
 			</div>
 			<div className="container bottom">
 				<ul className="todo-list">
-					{todos &&
-						todos.map((todo) => (
-							<Todo
-								todos={todos}
-								key={todo.id}
-								id={todo.id}
-								text={todo.text}
-								completed={todo.completed}
-								toggleComplete={toggleComplete}
-								deleteTodo={deleteTodo}
-								handleEdit={handleEdit}
-								newTask={newTask}
-								handleEditSubmit={handleEditSubmit}
-							/>
-						))}
+					{todos && hide
+						? uncompleteTodos.map((todo) => (
+								<Todo
+									todos={todos}
+									key={todo.id}
+									id={todo.id}
+									text={todo.text}
+									completed={todo.completed}
+									toggleComplete={toggleComplete}
+									deleteTodo={deleteTodo}
+									handleEdit={handleEdit}
+									newTask={newTask}
+									handleEditSubmit={handleEditSubmit}
+								/>
+						  ))
+						: todos.map((todo) => (
+								<Todo
+									todos={todos}
+									key={todo.id}
+									id={todo.id}
+									text={todo.text}
+									completed={todo.completed}
+									toggleComplete={toggleComplete}
+									deleteTodo={deleteTodo}
+									handleEdit={handleEdit}
+									newTask={newTask}
+									handleEditSubmit={handleEditSubmit}
+								/>
+						  ))}
 				</ul>
 				<div className="hideButton-container">
-					<input type="checkbox" name="hideCompleted" id="hideCompleted" />
+					<input
+						type="checkbox"
+						name="hideCompleted"
+						id="hideCompleted"
+						onClick={hideCompleted}
+					/>
 					<label htmlFor="hideCompleted">Hide Completed</label>
 				</div>
 			</div>
