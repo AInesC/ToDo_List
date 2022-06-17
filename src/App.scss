@@ -17,6 +17,24 @@ body {
 	&.top {
 		padding: 3rem 0;
 	}
+
+	&.bottom {
+		.sort-buttons {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 1.5rem;
+
+			button {
+				height: 40px;
+
+				svg {
+					height: 1rem;
+					fill: $secondary-color;
+				}
+			}
+		}
+	}
 }
 
 h1 {
@@ -31,6 +49,10 @@ h1 {
 	border-width: 3px;
 	border-style: solid;
 	padding: 0.5rem 1rem;
+
+	&:hover {
+		transform: scale(1.1);
+	}
 
 	&--primary {
 		background-color: $accent-color;
